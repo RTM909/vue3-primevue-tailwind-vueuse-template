@@ -5,11 +5,6 @@ defineProps({
     required: true,
   },
 });
-
-const toggleColorScheme = () => {
-  const element = document.querySelector("html");
-  element.classList.toggle("dark");
-};
 </script>
 
 <template>
@@ -23,8 +18,6 @@ const toggleColorScheme = () => {
 
     <Button label="Check" icon="pi pi-check"></Button>
     <Button icon="pi pi-home" aria-label="Save" />
-
-    <Button label="Toggle Color Scheme" @click="toggleColorScheme()" />
 
     <Card style="width: 25rem; overflow: hidden">
       <template #header>

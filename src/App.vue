@@ -1,11 +1,32 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterLink, RouterView } from "vue-router";
+import { useDark, useToggle } from "@vueuse/core";
+
+import HelloWorld from "./components/HelloWorld.vue";
+
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
+
+const toggleColorScheme = () => {
+  toggleDark();
+
+  const element = document.querySelector("html");
+  element.classList.toggle("dark");
+};
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <p>Dark theme: {{ isDark }}</p>
+    <Button label="Toggle Color Scheme" @click="toggleColorScheme()" />
+
+    <img
+      alt="Vue logo"
+      class="logo"
+      src="@/assets/logo.svg"
+      width="125"
+      height="125"
+    />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
